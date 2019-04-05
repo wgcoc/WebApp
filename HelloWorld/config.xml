@@ -2,11 +2,16 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
 "http://www.springframework.org/dtd/spring-beans.dtd">
  <beans>
- 	<!-- 定义一个Bean -->
+ 	<!-- 定义一个Bean，该Bean的俩个变量都通过依赖注入来完成之间的联系 -->
  	<bean id="HelloWorld" class="com.gc.action.HelloWorld">
- 	<!-- 将其变量msg通过依赖注入 -->
+ 		<!-- 将其变量msg通过依赖注入 -->
  		<property name="msg">
  			<value>HelloWorld001</value>
  		</property>
+ 		<!-- date变量通过依赖注入来完成 -->
+ 		<property name="date">
+ 			<ref bean="date"/>
+ 		</property>
  	</bean>
+ 	<bean id="date" class="java.util.Date"/>
  </beans>
